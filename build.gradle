@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenLocal()
+		maven { url 'http://192.168.17.247:8081/nexus/content/groups/public/' }
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.lurenjia'
+version = '0.0.1'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	maven { url 'http://192.168.17.247:8081/nexus/content/groups/public/' }
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.projectlombok:lombok')
+	compile('mysql:mysql-connector-java:8.0.13')
+	compile('dm.jdbc:Dm7JdbcDriver17:1.0')
+	compile('dm.dialect:DmDialect-for-hibernate5.0:1.0')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-test')
+}
